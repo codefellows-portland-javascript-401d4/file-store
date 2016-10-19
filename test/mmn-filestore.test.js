@@ -9,6 +9,9 @@ const myDir = '../data';
 
 const song = { title: 'Clocks', artist: 'Coldplay', genre: 'alternative' };
 const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternative' };
+// const song3 = { title: 'Midnight At The Oasis', artist: 'Maria Muldaur', genre: 'classic rock' };
+// const song4 = { title: 'Texas Flood', artist: 'Stevie Ray Vaughan', genre: 'blues' };
+// const song5 = { title: 'Du Hast', artist: 'Rammstein', genre: 'metal' };
 let id = '';
 
 describe('stores and retrieves an object', function() {
@@ -39,7 +42,7 @@ describe('stores and retrieves an object', function() {
     let expected = fs.readFileSync(path.join(myDir, test_id + '.json'));
     assert.deepEqual(JSON.parse(expected), obj);
   });
-});
+}); //tautology?
 
 describe('stores and retrieves multiple objects', function() {
   
@@ -49,9 +52,15 @@ describe('stores and retrieves multiple objects', function() {
   });
 
   it('stores two objects with unique ids', function() {
-
     let id1 = filestore.store(song);
     let id2 = filestore.store(song2);
     assert.notEqual(id1, id2);
+  });
+
+  it('stores and retrieves an ordered array of objects', function() {
+    let id1 = filestore.store(song);
+    // let id2 = filestore.store(song2);
+    let arr = filestore.songArr;
+    assert.include(arr, id1);
   });
 });
