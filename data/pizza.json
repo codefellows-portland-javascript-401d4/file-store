@@ -1,4 +1,1 @@
-{
-"restaurant":   "Mod Pizza",
-"category": "Mad Dog Pizza"
-};
+var pizza = {restaurant: "Mod Pizza", category: "Mad Dog Pizza"};

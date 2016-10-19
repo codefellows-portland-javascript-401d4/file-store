@@ -1,4 +1,1 @@
-{
-"restaurant":   "Chipotle",
-"category": "Carnitas Taco"
-};
+var taco = {restaurant: "Chipotle", category: "Carnitas Taco"};
