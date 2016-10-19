@@ -20,4 +20,14 @@ describe('store', () => {
     it('puts in a new object', done => {
         store.store({id: 'felix'}, './cats', done);
     });
+    it('retrieves object by id', done => {
+        store.retrieve('felix', './cats', done);
+    });
+    // it('checking if I can hard code read the file', done => {
+    //     fs.readFile('./cats/felix.json', 'utf-8', (err, data) => {
+    //         if (err) console.log(err);
+    //         console.log('data');
+    //         done();
+    //     });
+    // });
 });
