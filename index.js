@@ -1,9 +1,11 @@
 fs = require('fs');
 
 
-function writeToFile(filename, data) {
+function writeToFile(data) {
 
-  fs.writeFile(filename, data, function(err){
+  var stringData = JSON.stringify(data);
+  var filename = data.City.replace(/ /g,'_') + '.txt';
+  fs.writeFile(filename, stringData, function(err){
     if (err) {
       console.log('you got an error: ', err);
     } else {
@@ -12,4 +14,6 @@ function writeToFile(filename, data) {
   });
 }
 
-writeToFile('test.txt', 'hello world!');
+
+var city = {'City':'New York','State':'NY','Median_1_BR_price':'$3,370','Median_2_BR_price':'$4,820'};
+writeToFile(city);
