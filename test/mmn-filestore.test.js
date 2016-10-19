@@ -1,8 +1,11 @@
 const assert = require('chai').assert;
 const filestore = require('../lib/mmn-filestore.js');
+const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
+
+const myDir = '../data'; 
 
 const song = { title: 'Clocks', artist: 'Coldplay', genre: 'alternative' };
 const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternative' };
@@ -26,14 +29,14 @@ describe('stores and retrieves an object', function() {
     // Figure out what obj's JSON string looks like, read the file,
     // and compare the file's content's to the JSON string
     let expected = JSON.stringify(song);
-    let actual = fs.readFileSync(id + '.json'); // read file contents
+    let actual = fs.readFileSync(path.join(myDir, id + '.json')); // read file contents
     assert.equal(actual, expected);
   });
 
   it('retrieves an object from file given an id', function() {
-    let test_id = 'test';
+    let test_id = id;
     let obj = filestore.get(test_id);
-    let expected = fs.readFileSync(test_id + '.json');
+    let expected = fs.readFileSync(path.join(myDir, test_id + '.json'));
     assert.deepEqual(JSON.parse(expected), obj);
   });
 });
