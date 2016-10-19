@@ -51,6 +51,10 @@ describe('stores and retrieves multiple objects', function() {
     mkdirp.sync('../data');
   });
 
+  beforeEach(function() {
+    filestore.songArr = [];
+  });
+
   it('stores two objects with unique ids', function() {
     let id1 = filestore.store(song);
     let id2 = filestore.store(song2);
@@ -59,8 +63,10 @@ describe('stores and retrieves multiple objects', function() {
 
   it('stores and retrieves an ordered array of objects', function() {
     let id1 = filestore.store(song);
-    // let id2 = filestore.store(song2);
+    let id2 = filestore.store(song2);
     let arr = filestore.songArr;
     assert.include(arr, id1);
+    assert.include(arr, id2);
+    assert.equal(arr.length, 2);
   });
 });
