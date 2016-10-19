@@ -24,16 +24,34 @@ describe('index', function() {
       const dir = 'data';  // this is the test data folder
 
       fs.readdir(dir, function (err, files) {
-        if (err) {
+        if (err) {    // if you get an error, pass it to the callback to handle
           done(err)
-        }  // if you get an error, pass it to the callback to handle
-        else {
+        } else {
           assert.deepEqual(files, ['Portland.txt']);
           done();
         }
       })
     };
     writeToFile(testObj, callback);
+  });
+
+  it('should fill a file with a string of the passed obj', function(done) {
+
+    const testObj = {'City': 'Berkeley', 'Data': 'Hello World'};
+    const callback = function() {
+      const filepath = 'data/Berkeley.txt';  // this is the test data folder
+
+      fs.readFile(filepath, function (err, data) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err);
+        } else {
+          assert.equal(data, "{'City': 'Berkeley', 'Data': 'Hello World'}");
+          done();
+        }
+      })
+    };
+    writeToFile(testObj, callback);
   })
+
 
 }); // close describe
