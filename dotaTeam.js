@@ -1,4 +1,5 @@
 const fs = require('fs');
-
-
-module.exports = something;
+var dotaTeamToJSON = function(teamObj) {
+  return JSON.stringify(teamObj);
+}
+module.exports = dotaTeamToJSON;
