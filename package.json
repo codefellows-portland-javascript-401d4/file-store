@@ -1,0 +1,39 @@
+{
+  "name": "file-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test:run": "mocha",
+    "test:watch": "npm run test:run -- -w",
+    "test": "npm run test:run",
+    "pretest": "npm run lint",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elhendricks/file-store.git"
+  },
+  "author": "Erica Hendricks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elhendricks/file-store/issues"
+  },
+  "homepage": "https://github.com/elhendricks/file-store#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "globals": {
+    "describe": false,
+    "it": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "before": false,
+    "after": false
+  }
+}
