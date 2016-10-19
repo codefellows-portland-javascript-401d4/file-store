@@ -23,5 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added eslintrc and travis.yml files for testing
 - Added LICENSE file and a README
 - Started this change log
+- Forked from https://github.com/codefellows-portland-javascript-401d4/file-store
 
 
