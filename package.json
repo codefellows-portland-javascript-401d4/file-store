@@ -1,0 +1,32 @@
+{
+  "name": "file-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "npm run test:run",
+    "test:run": "mocha -R nyan",
+    "test:watch": "npm run test:run -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nthugon/file-store.git"
+  },
+  "author": "@nthugon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nthugon/file-store/issues"
+  },
+  "homepage": "https://github.com/nthugon/file-store#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  }
+}
