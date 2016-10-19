@@ -1,0 +1,31 @@
+{
+  "name": "mmn-file-store",
+  "version": "1.0.0",
+  "description": "Mike, Mark, and Nate's file store",
+  "main": "mmn-filestore.js",
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "pretest": "npm run lint",
+    "test": "mocha",
+    "build": "npm install",
+    "dev": "npm install --save-dev",
+    "watch": "npm run test -- -w",
+    "start": "node ./lib/mmn-filestore.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markgreenwood/file-store.git"
+  },
+  "author": "@markgreenwood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markgreenwood/file-store/issues"
+  },
+  "homepage": "https://github.com/markgreenwood/file-store#readme",
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+  }
+}
