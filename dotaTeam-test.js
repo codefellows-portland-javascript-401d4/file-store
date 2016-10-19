@@ -13,18 +13,18 @@ describe('File writer', function() {
     }
 
   it('Should take object and convert into JSON format', function() {
-
     assert(fileStore.dotaTeamToJSON(newTeam), {"teamName":"Evil Geniuses","teamMembers":["Arteezy","Sumail","Universe","Zai","Cr1t"],"region":"NA","tiWinner":true});  
   });
 
   it('Should store new object in new file with identifier for file name', function(done){
-    fileStore.createFile(newTeam, function(err) {
-        if (err) return done(err);
-        fs.readFile('./dotaTeams/EvilGeniuses.json', 'utf8', (err, data) => {
-          //if (err) return done(err);
-          // console.log('here');
-          assert.equal(data, '{"teamName":"Evil Geniuses","teamMembers":["Arteezy","Sumail","Universe","Zai","Cr1t"],"region":"NA","tiWinner":true}');
-          done();
+    rimraf('./dotaTeams/EvilGeniuses.json', function(err) {
+      if (err) {throw err;}
+      fileStore.createFile(newTeam, function(err) {
+          if (err) return done(err);
+          fs.readFile('./dotaTeams/EvilGeniuses.json', 'utf8', (err, data) => {
+            assert.equal(data, '{"teamName":"Evil Geniuses","teamMembers":["Arteezy","Sumail","Universe","Zai","Cr1t"],"region":"NA","tiWinner":true}');
+            done();
+        });
       });
     });
   });
