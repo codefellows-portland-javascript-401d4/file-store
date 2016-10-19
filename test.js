@@ -7,4 +7,8 @@ describe('store', () => {
         fs.readdir('./cats', (err, files) => { console.log(files);});
         done();
     });
+    it('gets the foo', done => {
+        fs.readFile('./cats/foo.json', "utf-8", (err, data) => { console.log(data);});
+        done();
+    });
 });
