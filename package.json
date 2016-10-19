@@ -1,0 +1,33 @@
+{
+  "name": "parallel_file_processor",
+  "version": "0.0.1",
+  "description": "An API to create an object store using JSON files and the file system.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "eslint *.js",
+    "test": "mocha",
+    "watch": "mocha -w *.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GloriaAnholt/file-store.git"
+  },
+  "keywords": [
+    "file-store", "API", "object-store", "JSON"
+  ],
+  "author": "Gloria Anholt",
+  "license": "CC-BY-NC-4.0",
+  "bugs": {
+    "url": "https://github.com/GloriaAnholt/file-store/issues"
+  },
+  "homepage": "https://github.com/GloriaAnholt/file-store#readme"
+}
