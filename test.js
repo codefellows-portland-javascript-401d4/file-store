@@ -31,3 +31,8 @@ describe('store', () => {
     //     });
     // });
 });
+
+// test case cat removal
+rimraf('./cats/felix.json', function(err){
+    console.log(err);
+});
