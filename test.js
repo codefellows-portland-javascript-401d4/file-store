@@ -21,3 +21,11 @@ describe('store', () => {
         store.store({id: 'felix'}, './cats', done);
     });
 });
+
+// test case cat removal
+rimraf('./cats/felix.json', function(err){
+    console.log(err);
+})
+rimraf('./cats/foo.json', function(err){
+    console.log(err);
+})
