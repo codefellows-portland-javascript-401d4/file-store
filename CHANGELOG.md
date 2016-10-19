@@ -10,11 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.1] - 2016-10-18
 ### Added
-- Tests for index.js now pass - working fizz-buzz game
+- Test for index.js file name passes: directory is deleted before each pass and recreated, then filled with data and checked.
+- Test for index.js content passes: dir is deleted and recreated, file is created, content is checked for a match to dummy object.
 
 ## [0.1.0] - 2016-10-18
 ### Added
-- index.js now contains a working, but untested, fizz-buzz implementation
+- index.js now contains a working, but untested, file writing implementation
 
 ## [0.0.1] - 2016-10-18
 ### Added

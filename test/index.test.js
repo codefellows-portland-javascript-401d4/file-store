@@ -1,22 +1,29 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
-const rmrf = require('rmrf');
+const rimraf = require('rimraf');
 const writeToFile = require('../index');
 
 
 describe('index', function() {
 
   beforeEach(function(done) {
-    rmrf('data/', function(err) {
-      if (err) {
-        done(err)
-      } else {
-        console.log('i removed the dir!');
-        done();
-      }
-    });
-  });
+    rimraf('data/', function(err) {
+        if (err) {
+          console.log('error deleting folder: ', err);
+          done(err)
+        } else {
+          fs.mkdir('data', function (err) {
+            if (err) {
+              console.log('error making folder: ', err);
+              done(err)
+            } else {
+              done();
+            }
+          });   // close fs.mkdir
+        }
+      });   // close rimraf
+  });   // close beforeEach
 
   it('should name a file with the passed objs city property', function(done) {
 
