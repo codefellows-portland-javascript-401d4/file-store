@@ -15,7 +15,7 @@ describe('save-file', function(done){
             fs.readdir(dirPath, function(err, files){
                 if (err) return done(err);
                 var dirContents = files.filter(f => (f !== 'index.txt'));
-                assert.deepEqual(dirContents, ['oak.txt', 'pine.txt', 'maple.txt']);
+                assert.deepEqual(dirContents, ['maple.txt', 'oak.txt', 'pine.txt']);
 
                 done();
             })

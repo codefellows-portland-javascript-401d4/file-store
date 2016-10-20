@@ -23,7 +23,7 @@ describe('index-dir', function(){
         var callback = function(err) {
             if (err) return done(err);
             var index = fs.readFileSync(dirPath + 'index.txt', 'utf-8');
-            assert.equal(index, 'oak.txt\npine.txt\nmaple.txt');
+            assert.equal(index, 'maple.txt\noak.txt\npine.txt');
            
             done();
         }
