@@ -23,12 +23,12 @@ function store(data, identifier, cb) {
           filename = data[0].toString() + '.json';
           filepath = path.join('data', filename);
           break;
-        } else if (data[identifier]) {    // If the identifier is in the object
+        } else if (data[identifier] && typeof data[identifier] != 'function') {    // If the identifier is in the object
           filename = data[identifier].toString().replace(/ /g, '_') + '.json';
           filepath = path.join('data', filename);
           break;
         } else {    // The identifier isn't valid, throw an error
-          cb('Error, unknown identifier.');
+          cb('Error, unknown identifier or value is a function. Please select another identifier.');
           break;
         }
       }
