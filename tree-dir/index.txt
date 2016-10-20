@@ -1,3 +1,0 @@
-maple.txt
-oak.txt
-pine.txt
