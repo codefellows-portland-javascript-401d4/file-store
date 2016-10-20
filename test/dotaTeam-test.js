@@ -1,6 +1,5 @@
 var assert = require('assert');
 var rimraf = require('rimraf');
-var mkdirp = require('mkdirp');
 const fs = require('fs');
 var fileStore = require('../dotaTeam');
 var createTestTeams = require('../Teams');
@@ -52,8 +51,22 @@ describe('File retriever', function() {
       var goodFiles = files.filter(function(item){
         return item !== '.DS_Store';
       });
-      console.log(goodFiles);
+      console.log('list of file names in dir', goodFiles);  //????
       assert.equal(goodFiles, goodFiles.sort());
+      done();
+    });
+  });
+
+  it('Should retrieve array of resources matching input array, sorted alphabetically', function(done) {
+    var testTeamArray = ['wingsgaming', 'evilgeniuses', 'natusvincere', 'alliance'];
+    fileStore.fetchMultiFile(testTeamArray, function(data) {
+      var testTeamNames = data.map(function(item) {
+        return JSON.parse(item);
+      }).map(function(item) {
+        return item.teamName.toLowerCase().split(' ').join('');
+      });
+      console.log('testTeamArray stuff', testTeamNames); //?????
+      assert.deepEqual(testTeamNames, testTeamArray.sort());
       done();
     });
   });

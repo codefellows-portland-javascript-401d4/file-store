@@ -83,7 +83,7 @@ var liquid = {
   teamMembers: ['MATUMBAMAN', 'Miracle-', 'MinD_ContRoL', 'KuroKy', 'BuLba'],
   region: 'EU',
   tiWinner: ''
-}
+};
 
 var secret = {
   teamName: 'Team Secret',
