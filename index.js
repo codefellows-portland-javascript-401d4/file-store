@@ -73,11 +73,10 @@ function getAll(dir, cb) {
   });
 }
 
-function callback(response) {
-  console.log('callback passed: ', response);
-}
-
-store({'a':12,'b':234},'a', callback);
+// function callback(response) {
+//   console.log('callback passed: ', response);
+// }
+// store({'a':12,'b':234},'a', callback);
 
 module.exports.store = store;
 module.exports.get = get;

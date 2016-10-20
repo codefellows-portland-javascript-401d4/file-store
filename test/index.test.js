@@ -40,7 +40,7 @@ describe('index', function() {
       })
     };
 
-    objectStore.store(testObj, callback);
+    objectStore.store(testObj, 'City', callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
@@ -58,10 +58,10 @@ describe('index', function() {
       })
     };
 
-    objectStore.store(testObj, callback);
+    objectStore.store(testObj, 'City', callback);
   });
 
-  it.only('should retrieve a file by name and return the contents', function(done) {
+  it('should retrieve a file by name and return the contents', function(done) {
     const newyork = {"City":"New York","State":"NY","Median_1_BR_price":"$3,370","Median_2_BR_price":"$4,820"};
     const sf = {"City":"San Francisco","State":"CA","Median_1_BR_price":"$3,500","Median_2_BR_price":"$4,770"};
     const boston = {"City":"Boston","State":"MA","Median_1_BR_price":"$2,800","Median_2_BR_price":"$3,200"};
@@ -78,9 +78,9 @@ describe('index', function() {
       })
     };
 
-    objectStore.store(newyork, function() {
-      objectStore.store(sf, function () {
-        objectStore.store(boston, function () {
+    objectStore.store(newyork, 'City', function() {
+      objectStore.store(sf, 'City', function () {
+        objectStore.store(boston, 'City', function () {
           objectStore.get('data/Boston.json', callback)
         });
       });
@@ -104,9 +104,9 @@ describe('index', function() {
       })
     };
 
-    objectStore.store(newyork, function(){
-      objectStore.store(sf, function(){
-        objectStore.store(boston, function(){
+    objectStore.store(newyork, 'City', function(){
+      objectStore.store(sf, 'City', function(){
+        objectStore.store(boston, 'City', function(){
           objectStore.getAll('data', callback)
         });
       });
