@@ -1,1 +1,0 @@
-{"City":"New York","State":"NY","Median_1_BR_price":"$3,370","Median_2_BR_price":"$4,820"}

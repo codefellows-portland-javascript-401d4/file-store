@@ -26,11 +26,10 @@ describe('index', function() {
   });   // close beforeEach
 
   it('should name a file with the passed objs city property', function(done) {
-
     const testObj = {'City': 'Portland', 'Data': 'Hello World'};
+
     const callback = function() {
       const dir = 'data';  // this is the test data folder
-
       fs.readdir(dir, function (err, files) {
         if (err) {    // if you get an error, pass it to the callback to handle
           done(err)
@@ -40,15 +39,15 @@ describe('index', function() {
         }
       })
     };
+
     objectStore.store(testObj, callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
-
     const testObj = {'City': 'Berkeley', 'Data': 'Hello World'};
+
     const callback = function() {
       const filepath = 'data/Berkeley.json';  // this is the test data folder
-
       fs.readFile(filepath, 'utf8', function (err, data) {
         if (err) {    // if you get an error, pass it to the callback to handle
           done(err);
@@ -58,17 +57,42 @@ describe('index', function() {
         }
       })
     };
+
     objectStore.store(testObj, callback);
   });
 
-  it('should read files out of a directory as an array', function(done) {
+  it.only('should retrieve a file by name and return the contents', function(done) {
+    const newyork = {"City":"New York","State":"NY","Median_1_BR_price":"$3,370","Median_2_BR_price":"$4,820"};
+    const sf = {"City":"San Francisco","State":"CA","Median_1_BR_price":"$3,500","Median_2_BR_price":"$4,770"};
+    const boston = {"City":"Boston","State":"MA","Median_1_BR_price":"$2,800","Median_2_BR_price":"$3,200"};
 
+    const callback = function() {
+      const filepath = 'data/Boston.json';  // this is the test file
+      fs.readFile(filepath, 'utf8', function (err, data) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err);
+        } else {
+          assert.deepEqual(data, '{"City":"Boston","State":"MA","Median_1_BR_price":"$2,800","Median_2_BR_price":"$3,200"}');
+          done();
+        }
+      })
+    };
+
+    objectStore.store(newyork, function() {
+      objectStore.store(sf, function () {
+        objectStore.store(boston, function () {
+          objectStore.get('data/Boston.json', callback)
+        });
+      });
+    });
+  });
+
+  it('should read files out of a directory as an array', function(done) {
     const newyork = {"City":"New York","State":"NY","Median_1_BR_price":"$3,370","Median_2_BR_price":"$4,820"};
     const sf = {"City":"San Francisco","State":"CA","Median_1_BR_price":"$3,500","Median_2_BR_price":"$4,770"};
     const boston = {"City":"Boston","State":"MA","Median_1_BR_price":"$2,800","Median_2_BR_price":"$3,200"};
 
     const callback = function(myFiles) {
-
       const filepath = 'data';
       fs.readdir(filepath, 'utf8', function (err, data) {
         if (err) {    // if you get an error, pass it to the callback to handle

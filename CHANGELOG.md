@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
+## [0.3.0] - 2016-10-18
+### Added
+- Module can now retrieve the contents of a single file and pass parsed json to the caller.
+- Test for selecting and reading a specific file pass.
+
 ## [0.2.0] - 2016-10-18
 ### Added
 - Module can now retrieve the contents of a directory and pass it as an array to the caller.
-- Tests for creating files in a dir and retrieving them pass.
+- Test for creating files in a dir and retrieving them pass.
 
 ## [0.1.1] - 2016-10-18
 ### Added
