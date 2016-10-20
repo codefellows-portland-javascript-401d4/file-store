@@ -35,19 +35,19 @@ describe('index', function() {
         if (err) {    // if you get an error, pass it to the callback to handle
           done(err)
         } else {
-          assert.deepEqual(files, ['Portland.txt']);
+          assert.deepEqual(files, ['Portland.json']);
           done();
         }
       })
     };
-    objectStore.storeObj(testObj, callback);
+    objectStore.store(testObj, callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
 
     const testObj = {'City': 'Berkeley', 'Data': 'Hello World'};
     const callback = function() {
-      const filepath = 'data/Berkeley.txt';  // this is the test data folder
+      const filepath = 'data/Berkeley.json';  // this is the test data folder
 
       fs.readFile(filepath, 'utf8', function (err, data) {
         if (err) {    // if you get an error, pass it to the callback to handle
@@ -58,7 +58,7 @@ describe('index', function() {
         }
       })
     };
-    objectStore.storeObj(testObj, callback);
+    objectStore.store(testObj, callback);
   });
 
   it('should read files out of a directory as an array', function(done) {
@@ -80,10 +80,10 @@ describe('index', function() {
       })
     };
 
-    objectStore.storeObj(newyork, function(){
-      objectStore.storeObj(sf, function(){
-        objectStore.storeObj(boston, function(){
-          objectStore.retrieveAll('data', callback)
+    objectStore.store(newyork, function(){
+      objectStore.store(sf, function(){
+        objectStore.store(boston, function(){
+          objectStore.getAll('data', callback)
         });
       });
     });
