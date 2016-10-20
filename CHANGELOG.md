@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
+## [0.2.0] - 2016-10-18
+### Added
+- Module can now retrieve the contents of a directory and pass it as an array to the caller.
+- Tests for creating files in a dir and retrieving them pass.
 
 ## [0.1.1] - 2016-10-18
 ### Added

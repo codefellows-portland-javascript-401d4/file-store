@@ -2,7 +2,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const writeToFile = require('../index');
+const objectStore = require('../index');
 
 
 describe('index', function() {
@@ -40,7 +40,7 @@ describe('index', function() {
         }
       })
     };
-    writeToFile(testObj, callback);
+    objectStore.storeObj(testObj, callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
@@ -58,8 +58,35 @@ describe('index', function() {
         }
       })
     };
-    writeToFile(testObj, callback);
-  })
+    objectStore.storeObj(testObj, callback);
+  });
 
+  it('should read files out of a directory as an array', function(done) {
+
+    const newyork = {"City":"New York","State":"NY","Median_1_BR_price":"$3,370","Median_2_BR_price":"$4,820"};
+    const sf = {"City":"San Francisco","State":"CA","Median_1_BR_price":"$3,500","Median_2_BR_price":"$4,770"};
+    const boston = {"City":"Boston","State":"MA","Median_1_BR_price":"$2,800","Median_2_BR_price":"$3,200"};
+
+    const callback = function(myFiles) {
+
+      const filepath = 'data';
+      fs.readdir(filepath, 'utf8', function (err, data) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err);
+        } else {
+          assert.deepEqual(data, myFiles);
+          done();
+        }
+      })
+    };
+
+    objectStore.storeObj(newyork, function(){
+      objectStore.storeObj(sf, function(){
+        objectStore.storeObj(boston, function(){
+          objectStore.retrieveAll('data', callback)
+        });
+      });
+    });
+  });
 
 }); // close describe
