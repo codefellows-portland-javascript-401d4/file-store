@@ -1,6 +1,9 @@
 const store = require('../lib/store');
 const assert = require('assert');
+const fs = require('fs');
+
 const elements = [
+
   {
     name: "hydrogen",
     number: 1,
@@ -18,6 +21,29 @@ const elements = [
     number: 3,
     mass: 7,
     symbol: "Li"
-  }
+  },
+
 ];
-store.saveFile(elements, 'elements');
+
+describe('file system', function() {
+
+
+  it('elements folder exists', function(done){
+    function JSONtest(err) {
+      if (err) return done(err);
+      console.log('Stinky Farts!');
+      done();
+    };
+    store.saveFile(elements, 'elements', JSONtest);
+  });
+
+
+  it('creates correct number of files', function(){
+
+  });
+
+});
+
+
+
+
