@@ -5,14 +5,15 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 
-const myDir = '../data'; 
+// const myDir = path.resolve(path.dirname(__dirname), '../data');
+const myDir = path.resolve(__dirname, '../data');
 
 const song1 = { title: 'Clocks', artist: 'Coldplay', genre: 'alternative' };
 const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternative' };
 // const song3 = { title: 'Midnight At The Oasis', artist: 'Maria Muldaur', genre: 'classic rock' };
 // const song4 = { title: 'Texas Flood', artist: 'Stevie Ray Vaughan', genre: 'blues' };
 // const song5 = { title: 'Du Hast', artist: 'Rammstein', genre: 'metal' };
-// let id = '';
+
 let id1 = 'firstSong';
 let id2 = 'secondSong';
 // let id3 = 'thirdSong';
@@ -22,8 +23,9 @@ let id2 = 'secondSong';
 describe('stores and retrieves an object', function() {
 
   before(function() {
-    rimraf.sync('../data');
-    mkdirp.sync('../data');
+    rimraf.sync(myDir);
+    mkdirp.sync(myDir);
+    filestore.setDir(myDir);
   });
 
   it('returns an id when obj is stored', function(done) {
@@ -61,8 +63,9 @@ describe('stores and retrieves an object', function() {
 describe('stores and retrieves multiple objects', function() {
   
   before(function() {
-    rimraf.sync('../data');
-    mkdirp.sync('../data');
+    rimraf.sync(myDir);
+    mkdirp.sync(myDir);
+    filestore.setDir(myDir);
   });
 
   it('stores two objects with unique ids', function(done) {
@@ -74,9 +77,17 @@ describe('stores and retrieves multiple objects', function() {
         done(err);
       });
     });
-    // id2 = filestore.store(id2, song2);
-    // assert.notEqual(id1, id2);
-    // assert.fail(null, null, 'Test not implemented yet.');
+  });
+
+  it('retrieves two objects stored above', function(done) {
+    filestore.get(id1, function(err, obj1) {
+      if (err) return done(err);
+      filestore.get(id2, function(err, obj2) {
+        assert.deepEqual(obj1, song1);
+        assert.deepEqual(obj2, song1);
+        done();
+      });
+    });
   });
 
   it('stores and retrieves an ordered array of objects', function() {
