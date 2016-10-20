@@ -72,9 +72,6 @@ describe('File Store System', function() {
       done();
     };
     get.findMultipleFiles(['beryllium', 'lithium', 'helium'], reqEleTest);
-
-  //   console.log('Variable reqEle:', reqEle);
-  //   assert.equal(reqEle, '[{name: "Beryllium", number: 4, mass: 9, symbol: "Be"},{name: "lithium",number: 3,mass: 7,symbol: "Li"},{name: "helium",number: 2,mass: 4,symbol: "He"}]');
   });
 
   it('creates a JSON file for a single specified element', function(done){
@@ -89,14 +86,6 @@ describe('File Store System', function() {
 
 });
 
-// function testCallback() {
-//   console.log('Test callback!');
-// };
-// function callMergeAll(){
-//   get.mergeAllFiles('elements', testCallback);
-// };
-
-// store.saveFile(elements, 'elements', callMergeAll);
 
 
 
