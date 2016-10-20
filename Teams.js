@@ -114,7 +114,7 @@ var dc = {
 };
 // rimraf('./dotaTeams/*', function(err){if (err) {throw err;}});
 
-var createTestTeams = function(err, callback) {
+var createTestTeams = function() {
   fileStore.createFile(ehome, function(){});
   fileStore.createFile(cdec, function(){});
   fileStore.createFile(ig, function(){});
@@ -131,7 +131,6 @@ var createTestTeams = function(err, callback) {
   fileStore.createFile(eg, function(){});
   fileStore.createFile(complexity,function(){});
   fileStore.createFile(dc,function(){});
-  callback();
 };
 
 module.exports = createTestTeams;

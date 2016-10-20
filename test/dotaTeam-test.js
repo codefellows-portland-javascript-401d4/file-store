@@ -2,8 +2,8 @@ var assert = require('assert');
 var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 const fs = require('fs');
-var fileStore = require('./dotaTeam');
-var createTestTeams = require('./Teams');
+var fileStore = require('../dotaTeam');
+var createTestTeams = require('../Teams');
 
 describe('File writer', function() {
   var newTeam = {
@@ -41,17 +41,26 @@ describe('File retriever', function() {
   it('Should retrieve individual resource by identifier', function(done) {
     fileStore.fetchFile('evilgeniuses', function(err, data) {
       if (err) return done(err);
-      console.log(data);
       assert.equal(data, '{"teamName":"Evil Geniuses","teamMembers":["Arteezy","Sumail","Universe","Zai","Cr1t"],"region":"NA","tiWinner":true}');
       done();
     });
   });
 
-  it('Should retrieve list of all resources, ordered by identifier', function(done) {
+  it('Should retrieve list of all resources, sorted alphabetically', function(done) {
     fileStore.fetchDir('./dotaTeams', function(err, files){
       if (err) return done(err);
-      console.log(files);
-      assert.equal(files.length, 16);
+      var goodFiles = files.filter(function(item){
+        return item !== '.DS_Store';
+      });
+      console.log(goodFiles);
+      assert.equal(goodFiles, goodFiles.sort());
+      done();
+    });
+  });
+
+  after(function(done){
+    rimraf('./dotaTeams/*', (err) => {
+      if (err) throw err;
       done();
     });
   });

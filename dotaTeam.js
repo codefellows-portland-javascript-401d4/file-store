@@ -29,7 +29,8 @@ fileStore.fetchFile = function(teamName, callback) {
 fileStore.fetchDir = function(dir, callback) {
   fs.readdir(dir, 'utf8',function(err, files){
     if (err) throw err;
-    callback(err, files);
+    var sortedDir = files.sort();
+    callback(err, sortedDir);
   });
 };
 
