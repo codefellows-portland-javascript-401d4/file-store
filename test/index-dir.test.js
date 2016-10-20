@@ -21,7 +21,6 @@ describe('index-dir', function(){
     
     it('writes directory list in index file', function(done){
         var callback = function(err) {
-            console.log(__dirname);
             if (err) return done(err);
             var index = fs.readFileSync(dirPath + 'index.txt', 'utf-8');
             assert.equal(index, 'oak.txt\npine.txt\nmaple.txt');
