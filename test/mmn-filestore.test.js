@@ -84,7 +84,7 @@ describe('stores and retrieves multiple objects', function() {
       if (err) return done(err);
       filestore.get(id2, function(err, obj2) {
         assert.deepEqual(obj1, song1);
-        assert.deepEqual(obj2, song1);
+        assert.deepEqual(obj2, song2);
         done();
       });
     });
