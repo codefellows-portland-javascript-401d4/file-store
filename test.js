@@ -120,7 +120,7 @@ describe('check that all files were properly stored', done => {
     it('checks to make sure that retrieve gives us an array of all resources if you retrieve any ID', done => {
         store.retrieve('tardar', './cats', (err, data, array) => {
             assert.deepEqual(data, tardar);
-            assert.sameDeepMembers(array, catArray);
+            assert.deepEqual(array, catArray);
             done();
         });
     });
