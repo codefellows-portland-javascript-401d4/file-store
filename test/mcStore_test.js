@@ -8,21 +8,24 @@ const dresden = {
     name: 'Harry Dresden',
     type: 'Wizard/Winter Knight',
     location: 'Chicago',
-    Occupation: 'P.I./Professional Wizard'
+    Occupation: 'P.I./Professional Wizard',
+    NbrBooks: 15
 };
 
 const tavi = {
     name: 'Gaius Octavius',
     type: 'Crafter',
     location: 'Alera',
-    Occupation: 'First Lord'
+    Occupation: 'First Lord',
+    NbrBooks: 5
 };
 
 const jane = {
     name: 'Jane Yellowrock',
     type: 'Shapeshifter',
     location: 'New Orleans',
-    Occupation: 'Vampire Hunter'
+    Occupation: 'Vampire Hunter',
+    NbrBooks: 5
 };
 
 // Set up for tests
@@ -50,10 +53,15 @@ describe('testing storage', function(){
 
     it('#sorts the data pulled out', function(done) {
         //retreive and sort data
-        mainCharacter.storeMC(tavi, (err, id) => {
-            done();
-        });
-        mainCharacter.storeMC(jane, (err, id) => {
+
+        // store the other two objects into files.
+        mainCharacter.storeMC(tavi, (err, id) => {});
+        mainCharacter.storeMC(jane, (err, id) => {});
+
+        // now get all the files in a sorted order
+        const testRtn = ['gaius_octavius', 'harry_dresden', 'jane_yellowrock'];
+        mainCharacter.getAllSortedMC( (err, data) => {
+            assert.deepEqual(data, testRtn);
             done();
         });
     });
