@@ -1,9 +1,8 @@
-const store = require('../lib/store.js');
+const store = require('../lib/store');
+const get = require('../lib/get');
 const assert = require('assert');
 const fs = require('fs');
-const get = require('../lib/get.js');
 const rimraf = require('rimraf');
-
 const elements = [
   {
     name: "hydrogen",
@@ -24,38 +23,34 @@ const elements = [
     symbol: "Li"
   },
   {
-    name: "beryllium",
+    name: "Beryllium",
     number: 4,
     mass: 9,
     symbol: "Be"
   },
   {
-    name: "boron",
+    name: "Boron",
     number: 5,
     mass: 11,
     symbol: "B"
   }
 ];
-
-describe('File Store System', function() {
-
-  before(function(done) {
-    rimraf('../data/elements', done);
-    console.log('Rimraffed!');
+describe('adding and removing files', function(){
+  before(function(done){
+    rimraf((__dirname).slice(0,-5) + '/data/elements', done);
+    console.log('deleted');
   });
-
-
-  it('elements folder exists', function(done) {
-    // test function
-    function directoryTest(err) {
-      if (err) return done(err);
-      assert.ok(fs.existsSync('../data/elements'));
+ 
+  it('creates a new directory', function(done){
+    function test() {
+      console.log('test 1 running');
+      console.log('here is the directory', (__dirname).slice(0,-5) + '/data/elements');
+      assert.ok(fs.existsSync((__dirname).slice(0,-5) + '/data/elements','../data/elements'));
       done();
     };
-    // run save elements with test function
-    store.saveFile(elements, 'elements', directoryTest);
+    store.saveFile(elements, 'elements', test);
   });
-
+    
   it('creates JSON files in the directory whose contents are equal to the original content when parsed', function(done){
     function secondTest(arr) {
       console.log('test 2 running');
@@ -64,26 +59,22 @@ describe('File Store System', function() {
     };  
     get.mergeAllFiles('elements', secondTest);  
   });
-
-  it('returns requested files', function(done){
-    //test function
-    function reqEleTest(arr) {
-      assert.deepEqual(arr, [{ name: "helium",number: 2,mass: 4,symbol: "He"}, { name: "lithium",number: 3,mass: 7,symbol: "Li"}, { name: "beryllium", number: 4, mass: 9, symbol: "Be"}]);
+  it('creates JSON files for only the specified elements', function(done){
+    function thirdTest(arr) {
+      console.log('test 3 running');
+      assert.deepEqual([{name: "helium", number: 2, mass: 4, symbol: "He"}, {name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
-    };
-    get.findMultipleFiles(['beryllium', 'lithium', 'helium'], reqEleTest);
+    };  
+    get.findMultipleFiles(['beryllium', 'helium'], thirdTest);  
   });
-
   it('creates a JSON file for a single specified element', function(done){
     function fourthTest(arr) {
       console.log('test 4 running');
-      assert.deepEqual([{name: "beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
+      assert.deepEqual([{name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
     };  
     get.findMultipleFiles(['beryllium'], fourthTest);  
   });
-
-
 });
 
 
