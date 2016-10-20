@@ -27,7 +27,7 @@ describe('stores and retrieves an object', function() {
   it('returns an id when obj is stored', function() {
     // Given an object, store the object in a file and return an id
     id = filestore.store(id1, song);
-    assert.isDefined(id);
+    assert.equal(id, id1);
   });
 
   it('JSON string matches contents of file', function() {
