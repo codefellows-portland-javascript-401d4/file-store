@@ -59,6 +59,22 @@ describe('index', function() {
     objectStore.store(testStr, 'irrelevant', callback);
   });
 
+  it('should name a file with a truncated string passed in', function(done) {
+    const testStr = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+    const callback = function() {
+      const dir = 'data';  // this is the test data folder
+      fs.readdir(dir, function (err, files) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err)
+        } else {
+          assert.deepEqual(files, ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json']);
+          done();
+        }
+      })
+    };
+    objectStore.store(testStr, 'irrelevant', callback);
+  });
+
   it('should name a file with a number passed in', function(done) {
     const testNum = 12345.6789;
     const callback = function() {
@@ -73,6 +89,22 @@ describe('index', function() {
       })
     };
     objectStore.store(testNum, 'irrelevant', callback);
+  });
+
+  it('should name a file with the first element in an array passed in', function(done) {
+    const testArr = ['myArray', 23, 'b', 'penguins'];
+    const callback = function() {
+      const dir = 'data';  // this is the test data folder
+      fs.readdir(dir, function (err, files) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err)
+        } else {
+          assert.deepEqual(files, ['myArray.json']);
+          done();
+        }
+      })
+    };
+    objectStore.store(testArr, 'irrelevant', callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
