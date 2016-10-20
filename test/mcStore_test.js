@@ -59,7 +59,7 @@ describe('testing storage', function(){
         mainCharacter.storeMC(jane, (err, id) => {});
 
         // now get all the files in a sorted order
-        const testRtn = ['gaius_octavius', 'harry_dresden', 'jane_yellowrock'];
+        const testRtn = [tavi, dresden, jane];
         mainCharacter.getAllSortedMC( (err, data) => {
             assert.deepEqual(data, testRtn);
             done();
