@@ -32,14 +32,6 @@ fileStore.fetchDir = function(dir, callback) {
     callback(err, files);
   });
 };
-var dc = {
-  teamName: 'Digital Chaos',
-  teamMembers: ['Resolut1on', 'w33', 'MoonMeander', 'MiSeRy', 'Saksa'],
-  region: 'NA',
-  tiWinner: false
-};
-
-fileStore.createFile(dc, function(){});
 
 module.exports = fileStore;
 

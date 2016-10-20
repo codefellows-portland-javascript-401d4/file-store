@@ -131,6 +131,7 @@ var createTestTeams = function(err, callback) {
   fileStore.createFile(eg, function(){});
   fileStore.createFile(complexity,function(){});
   fileStore.createFile(dc,function(){});
+  callback();
 };
 
 module.exports = createTestTeams;
