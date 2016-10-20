@@ -8,16 +8,18 @@ const mkdirp = require('mkdirp');
 const myDir = '../data'; 
 
 const song1 = { title: 'Clocks', artist: 'Coldplay', genre: 'alternative' };
-// const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternative' };
+const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternative' };
 // const song3 = { title: 'Midnight At The Oasis', artist: 'Maria Muldaur', genre: 'classic rock' };
 // const song4 = { title: 'Texas Flood', artist: 'Stevie Ray Vaughan', genre: 'blues' };
 // const song5 = { title: 'Du Hast', artist: 'Rammstein', genre: 'metal' };
 // let id = '';
 let id1 = 'firstSong';
-// let id2 = 'secondSong';
+let id2 = 'secondSong';
+// let id3 = 'thirdSong';
+// let id4 = 'fourthSong';
+// let id5 = 'fifthSong';
 
 describe('stores and retrieves an object', function() {
-
 
   before(function() {
     rimraf.sync('../data');
@@ -40,15 +42,15 @@ describe('stores and retrieves an object', function() {
   it('JSON string matches contents of file', function() {
     // Figure out what obj's JSON string looks like, read the file,
     // and compare the file's content's to the JSON string
+    // Since we're using readFileSync for this test, we don't need the 'done' callback
     let expected = JSON.stringify(song1);
     let actual = fs.readFileSync(path.join(myDir, id1 + '.json')); // read file contents
     assert.equal(actual, expected);
   });
 
   it('retrieves an object from file given an id', function(done) {
-    let test_id = id1;
-    let expected = fs.readFileSync(path.join(myDir, test_id + '.json'));
-    filestore.get(test_id, function(err, obj) {
+    let expected = fs.readFileSync(path.join(myDir, id1 + '.json'));
+    filestore.get(id1, function(err, obj) {
       if (err) return done(err);
       assert.deepEqual(JSON.parse(expected), obj);
       done();
@@ -63,14 +65,26 @@ describe('stores and retrieves multiple objects', function() {
     mkdirp.sync('../data');
   });
 
-  it('stores two objects with unique ids', function() {
-    // id1 = filestore.store(id1, song1);
+  it('stores two objects with unique ids', function(done) {
+
+    filestore.store(id1, song1, function(err, rtnId1) {
+      if (err) return done(err);
+      filestore.store(id2, song2, function(err, rtnId2) {
+        assert.notEqual(rtnId1, rtnId2);
+        done(err);
+      });
+    });
     // id2 = filestore.store(id2, song2);
     // assert.notEqual(id1, id2);
-    assert.fail(null, null, 'Test not implemented yet.');
+    // assert.fail(null, null, 'Test not implemented yet.');
   });
 
   it('stores and retrieves an ordered array of objects', function() {
     assert.fail(null, null, 'Test not implemented yet.');
   });
+
+});
+
+describe('retrieves an array of objects in specified order given an array of ids', function() {
+
 });
