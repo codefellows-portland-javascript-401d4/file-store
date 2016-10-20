@@ -113,19 +113,24 @@ var dc = {
   tiWinner: false
 };
 // rimraf('./dotaTeams/*', function(err){if (err) {throw err;}});
-fileStore.createFile(ehome, function(){});
-fileStore.createFile(cdec, function(){});
-fileStore.createFile(ig, function(){});
-fileStore.createFile(newbee,function(){});
-fileStore.createFile(wings, function(){});
-fileStore.createFile(fnatic, function(){});
-fileStore.createFile(mvp, function(){});
-fileStore.createFile(tnc,function(){});
-fileStore.createFile(navi, function(){});
-fileStore.createFile(alliance, function(){});
-fileStore.createFile(og,function(){});
-fileStore.createFile(liquid, function(){});
-fileStore.createFile(secret, function(){});
-fileStore.createFile(eg, function(){});
-fileStore.createFile(complexity,function(){});
-fileStore.createFile(dc,function(){});
+
+var createTestTeams = function(err, callback) {
+  fileStore.createFile(ehome, function(){});
+  fileStore.createFile(cdec, function(){});
+  fileStore.createFile(ig, function(){});
+  fileStore.createFile(newbee,function(){});
+  fileStore.createFile(wings, function(){});
+  fileStore.createFile(fnatic, function(){});
+  fileStore.createFile(mvp, function(){});
+  fileStore.createFile(tnc,function(){});
+  fileStore.createFile(navi, function(){});
+  fileStore.createFile(alliance, function(){});
+  fileStore.createFile(og,function(){});
+  fileStore.createFile(liquid, function(){});
+  fileStore.createFile(secret, function(){});
+  fileStore.createFile(eg, function(){});
+  fileStore.createFile(complexity,function(){});
+  fileStore.createFile(dc,function(){});
+};
+
+module.exports = createTestTeams;

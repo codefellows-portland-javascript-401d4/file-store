@@ -4,7 +4,7 @@ var fileStore = {};
 
 fileStore.dotaTeamToJSON = function(teamObj) {
   return JSON.stringify(teamObj);
-}
+};
 
 fileStore.createFile = function(teamObj, callback) {
   var teamPath = teamObj.teamName.split(' ').join('').toLowerCase();
@@ -15,7 +15,7 @@ fileStore.createFile = function(teamObj, callback) {
     if (err) return callback(err);
     callback(err);
   });
-}
+};
 
 fileStore.fetchFile = function(teamName, callback) {
   var fetchPath = teamName + '.json';
@@ -24,14 +24,14 @@ fileStore.fetchFile = function(teamName, callback) {
     if (err) throw err;
     callback(err, data);
   });
-}
+};
 
 fileStore.fetchDir = function(dir, callback) {
   fs.readdir(dir, 'utf8',function(err, files){
     if (err) throw err;
     callback(err, files);
-  })
-}
+  });
+};
 var dc = {
   teamName: 'Digital Chaos',
   teamMembers: ['Resolut1on', 'w33', 'MoonMeander', 'MiSeRy', 'Saksa'],
