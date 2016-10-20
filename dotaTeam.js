@@ -7,16 +7,26 @@ fileStore.dotaTeamToJSON = function(teamObj) {
 }
 
 fileStore.createFile = function(teamObj, callback) {
-  var teamPath = teamObj.teamName.split(' ').join('');
+  var teamPath = teamObj.teamName.split(' ').join('').toLowerCase();
   var filePath = path.join('./dotaTeams', teamPath);
   filePath += '.json';
   var teamJSON = fileStore.dotaTeamToJSON(teamObj);
   fs.writeFile(filePath, teamJSON, 'utf8', function(err) {
     if (err) return callback(err);
-    callback();
+    callback(err);
   });
 }
 
+fileStore.fetchFile = function(teamName, callback) {
+  var fetchPath = teamName + '.json';
+  fetchPath = './dotaTeams/' + fetchPath;
+  fs.readFile(fetchPath, 'utf-8', (err, data) => {
+    if (err) throw err;
+    callback(err, data);
+  });
+}
+
+fileStore.fetchFile('evilgeniuses')
 
 module.exports = fileStore;
 
