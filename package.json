@@ -1,5 +1,5 @@
 {
-  "name": "tyristom",
+  "name": "tyristomcat",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
@@ -22,6 +22,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.8.1",
-    "mocha": "^3.1.2"
+    "gulp-rimraf": "^0.2.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4"
   }
 }
