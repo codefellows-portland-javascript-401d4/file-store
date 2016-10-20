@@ -34,7 +34,7 @@ describe('file system', function() {
       console.log('Stinky Farts!');
       done();
     };
-    store.saveFile(elements, 'elements', JSONtest);
+    get.mergeAllFiles('elements', callback);
   });
 
 
