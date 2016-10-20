@@ -26,7 +26,12 @@ fileStore.fetchFile = function(teamName, callback) {
   });
 }
 
-fileStore.fetchFile('evilgeniuses')
+fileStore.fetchDir = function(dir, callback) {
+  fs.readdir(dir, 'utf8',function(err, files){
+    if (err) throw err;
+    callback(err, files);
+  })
+}
 
 module.exports = fileStore;
 

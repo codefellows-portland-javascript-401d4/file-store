@@ -30,7 +30,7 @@ describe('File writer', function() {
   });
 });
 
-describe('File retriever', function() {
+describe.only('File retriever', function() {
 
   it('Should retrieve individual resource by identifier', function(done) {
     fileStore.fetchFile('evilgeniuses', function(err, data) {
@@ -41,8 +41,13 @@ describe('File retriever', function() {
     });
   });
 
-  it('Should retrieve list of all resources, ordered by identifier', function() {
-
+  it('Should retrieve list of all resources, ordered by identifier', function(done) {
+    fileStore.fetchDir('./dotaTeams', function(err, files){
+      if (err) return done(err);
+      console.log(files);
+      assert.strictEqual(files, ['evilgeniuses.json', 'fnatic.json', 'teamsecret.json']);
+      done();
+    })
   });
 
 });
