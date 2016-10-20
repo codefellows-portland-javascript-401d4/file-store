@@ -56,20 +56,21 @@ describe('stores and retrieves an object', function() {
   });
 });
 
-// describe('stores and retrieves multiple objects', function() {
+describe('stores and retrieves multiple objects', function() {
   
-//   before(function() {
-//     rimraf.sync('../data');
-//     mkdirp.sync('../data');
-//   });
+  before(function() {
+    rimraf.sync('../data');
+    mkdirp.sync('../data');
+  });
 
-//   it('stores two objects with unique ids', function() {
-//     id1 = filestore.store(id1, song);
-//     id2 = filestore.store(id2, song2);
-//     assert.notEqual(id1, id2);
-//   });
+  it('stores two objects with unique ids', function() {
+    // id1 = filestore.store(id1, song);
+    // id2 = filestore.store(id2, song2);
+    // assert.notEqual(id1, id2);
+    assert.fail(null, null, 'Test not implemented yet.');
+  });
 
-//   it('stores and retrieves an ordered array of objects', function() {
-//     assert.fail(null, null, 'Test not implemented yet.');
-//   });
-// });
+  it('stores and retrieves an ordered array of objects', function() {
+    assert.fail(null, null, 'Test not implemented yet.');
+  });
+});
