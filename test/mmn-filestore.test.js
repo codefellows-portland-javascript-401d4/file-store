@@ -13,6 +13,8 @@ const song2 = { title: 'Tom\'s Diner', artist: 'Suzanne Vega', genre: 'alternati
 // const song4 = { title: 'Texas Flood', artist: 'Stevie Ray Vaughan', genre: 'blues' };
 // const song5 = { title: 'Du Hast', artist: 'Rammstein', genre: 'metal' };
 let id = '';
+let id1 = 'firstSong';
+let id2 = 'secondSong';
 
 describe('stores and retrieves an object', function() {
 
@@ -24,7 +26,7 @@ describe('stores and retrieves an object', function() {
 
   it('returns an id when obj is stored', function() {
     // Given an object, store the object in a file and return an id
-    id = filestore.store(song);
+    id = filestore.store(id1, song);
     assert.isDefined(id);
   });
 
@@ -32,7 +34,7 @@ describe('stores and retrieves an object', function() {
     // Figure out what obj's JSON string looks like, read the file,
     // and compare the file's content's to the JSON string
     let expected = JSON.stringify(song);
-    let actual = fs.readFileSync(path.join(myDir, id + '.json')); // read file contents
+    let actual = fs.readFileSync(path.join(myDir, id1 + '.json')); // read file contents
     assert.equal(actual, expected);
   });
 
@@ -42,7 +44,7 @@ describe('stores and retrieves an object', function() {
     let expected = fs.readFileSync(path.join(myDir, test_id + '.json'));
     assert.deepEqual(JSON.parse(expected), obj);
   });
-}); //tautology?
+});
 
 describe('stores and retrieves multiple objects', function() {
   
@@ -51,22 +53,13 @@ describe('stores and retrieves multiple objects', function() {
     mkdirp.sync('../data');
   });
 
-  beforeEach(function() {
-    filestore.songArr = [];
-  });
-
   it('stores two objects with unique ids', function() {
-    let id1 = filestore.store(song);
-    let id2 = filestore.store(song2);
+    id1 = filestore.store(id1, song);
+    id2 = filestore.store(id2, song2);
     assert.notEqual(id1, id2);
   });
 
   it('stores and retrieves an ordered array of objects', function() {
-    let id1 = filestore.store(song);
-    let id2 = filestore.store(song2);
-    let arr = filestore.songArr;
-    assert.include(arr, id1);
-    assert.include(arr, id2);
-    assert.equal(arr.length, 2);
+
   });
 });
