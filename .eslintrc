@@ -19,11 +19,7 @@
             "error",
             4
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
+         "quotes": [
             "error",
             "single"
         ],
