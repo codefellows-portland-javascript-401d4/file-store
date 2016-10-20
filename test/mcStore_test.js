@@ -1,6 +1,7 @@
 const assert = require('assert');
 // const fs = require('fs');
 const mainCharacter = require('../lib/mainCharacter');
+const rimraf = require('rimraf');
 
 // test data to use
 const dresden = {
@@ -28,6 +29,9 @@ const jane = {
 
 // Run tests
 describe('testing storage', function(){
+    after(function(cb){
+        rimraf('./data', cb)
+    })
     it('#stores an object properly', function(done) {
         // store an object
         mainCharacter.storeMC(dresden, (err, id) => {
@@ -44,4 +48,13 @@ describe('testing storage', function(){
         });
     });
 
+    it('#sorts the data pulled out', function(done) {
+        //retreive and sort data
+        mainCharacter.storeMC(tavi, (err, id) => {
+            done();
+        });
+        mainCharacter.storeMC(jane, (err, id) => {
+            done();
+        });
+    });
 });
