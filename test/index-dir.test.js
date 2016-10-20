@@ -5,6 +5,10 @@ var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 
 
+// after(function(err) {
+//         rimraf.sync('tree-dir/index.txt');
+//         rimraf.sync('tree-dir/*.json');
+//     })
 
 describe('index-dir', function(){
     var tree1 = {name: "oak", deciduous: false, age: 150}
@@ -12,10 +16,7 @@ describe('index-dir', function(){
     var tree3 = {name: "maple", deciduous: true, age: 50}
     var dirPath = 'tree-dir/';
     
-    before(function() {
-        rimraf(dirPath + 'index.txt', console.log('Error: 'err));
-        rimraf(dirPath + '*.json', console.log('Error: 'err));
-    })
+    
 
     
     it('writes directory list in index file', function(done){
