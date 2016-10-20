@@ -7,7 +7,7 @@
     "test": "mocha -R nyan",
     "pretest": "eslint ./",
     "test:watch": "mocha -R nyan -w",
-    "lint": "eslint"
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",

@@ -4,8 +4,17 @@ var store = require('./lib/store');
 var rimraf = require('rimraf');
 
 // test case cat removal
-rimraf('./cats/felix.json', function(err){
-    console.log(err);
+describe('rimraf check', () => {
+    it('deletes all files in ./cats', () => {
+        fs.readdir('./cats', 'utf-8', function(err, files) {
+            if (err) return err;
+            files.forEach(function(filename) {
+                rimraf('./cats/' + filename, function(err){
+                    console.log(err);
+                });
+            });
+        });
+    });
 });
 
 describe('store', () => {
@@ -26,6 +35,6 @@ describe('store', () => {
     it('retrieves object by id', done => {
         store.retrieve('felix', './cats', done);
     });
-    it('Deep comparison of objects')
+    it('Deep comparison of objects');
 });
 
