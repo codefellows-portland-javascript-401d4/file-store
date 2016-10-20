@@ -1,0 +1,32 @@
+{
+  "name": "file-store",
+  "version": "1.0.0",
+  "description": "file system store and retrieve",
+  "main": "lib/index.js",
+  "directories": "",
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "mocha",
+    "test:watch": "npm run test -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timcombs/file-store.git"
+  },
+  "author": "tim combs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timcombs/file-store/issues"
+  },
+  "homepage": "https://github.com/timcombs/file-store#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  }
+}
