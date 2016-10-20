@@ -12,23 +12,21 @@ describe('index-dir', function(){
     var tree3 = {name: "maple", deciduous: true, age: 50}
     var dirPath = 'tree-dir/';
     
-    // before(function() {
-    //     rimraf(dirPath + 'index.txt', console.log('Error: 'err));
-    //     rimraf(dirPath + '*.json', console.log('Error: 'err));
-    // })
+    before(function() {
+        rimraf(dirPath + 'index.txt', console.log('Error: 'err));
+        rimraf(dirPath + '*.json', console.log('Error: 'err));
+    })
 
     
-    it('writes directory list', function(done){
+    it('writes directory list in index file', function(done){
         var callback = function(err, data) {
             console.log(__dirname);
             if (err) return done(err);
             var index = fs.readFileSync(dirPath + 'index.txt', 'utf-8');
-            assert.equal(index, 'oak.txt\npine.txt\nmaple.txt');
-            
+            assert.equal(index, 'maple.txt\noak.txt\npine.txt');
+           
             done();
         }
-
-        indexDir(dirPath, callback);
-          
+        indexDir('./tree-dir/', callback);
     })
 })
