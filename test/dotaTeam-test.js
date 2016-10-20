@@ -51,7 +51,6 @@ describe('File retriever', function() {
       var goodFiles = files.filter(function(item){
         return item !== '.DS_Store';
       });
-      console.log('list of file names in dir', goodFiles);  //????
       assert.equal(goodFiles, goodFiles.sort());
       done();
     });
@@ -65,7 +64,6 @@ describe('File retriever', function() {
       }).map(function(item) {
         return item.teamName.toLowerCase().split(' ').join('');
       });
-      console.log('testTeamArray stuff', testTeamNames); //?????
       assert.deepEqual(testTeamNames, testTeamArray.sort());
       done();
     });

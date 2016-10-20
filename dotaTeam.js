@@ -36,11 +36,11 @@ fileStore.fetchDir = function(dir, callback) {
 
 fileStore.fetchMultiFile = function(array, callback) {
   var multiFile = [];
-  array.sort().forEach(function(file){
+  array.forEach(function(file){
     fileStore.fetchFile(file, function(err, data){
-      console.log('fetchFile ', data);
       multiFile.push(data);
       if (multiFile.length === array.length) {
+        multiFile.sort();
         callback(multiFile);
       }
     });
