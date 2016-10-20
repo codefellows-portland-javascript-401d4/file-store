@@ -1,5 +1,4 @@
 const assert = require('assert');
-// const fs = require('fs');
 const mainCharacter = require('../lib/mainCharacter');
 const rimraf = require('rimraf');
 
