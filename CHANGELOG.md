@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 
+## [1.0.0] - 2016-10-18
+### Added
+- API Changed! Incompatible with pre-release versions. You now *must* pass the identifier to save/search for in the call.
+- Module can now take different data types and still use their information to store them as files.
+
 ## [0.3.0] - 2016-10-18
 ### Added
 - Module can now retrieve the contents of a single file and pass parsed json to the caller.
