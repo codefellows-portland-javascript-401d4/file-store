@@ -25,6 +25,7 @@ describe('index', function() {
       });   // close rimraf
   });   // close beforeEach
 
+
   it('should name a file with the passed objs city property', function(done) {
     const testObj = {'City': 'Portland', 'Data': 'Hello World'};
 
@@ -39,8 +40,39 @@ describe('index', function() {
         }
       })
     };
-
     objectStore.store(testObj, 'City', callback);
+  });
+
+  it('should name a file with the string passed in', function(done) {
+    const testStr = 'Portland';
+    const callback = function() {
+      const dir = 'data';  // this is the test data folder
+      fs.readdir(dir, function (err, files) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err)
+        } else {
+          assert.deepEqual(files, ['Portland.json']);
+          done();
+        }
+      })
+    };
+    objectStore.store(testStr, 'irrelevant', callback);
+  });
+
+  it('should name a file with a number passed in', function(done) {
+    const testNum = 12345.6789;
+    const callback = function() {
+      const dir = 'data';  // this is the test data folder
+      fs.readdir(dir, function (err, files) {
+        if (err) {    // if you get an error, pass it to the callback to handle
+          done(err)
+        } else {
+          assert.deepEqual(files, ['12345.6789.json']);
+          done();
+        }
+      })
+    };
+    objectStore.store(testNum, 'irrelevant', callback);
   });
 
   it('should fill a file with a string of the passed obj', function(done) {
