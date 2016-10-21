@@ -77,7 +77,7 @@ describe('store', done => {
     });
 
     it('Deep comparison of objects', done => {
-        store.retrieve('felix', './cats', function(err, data, array) {
+        store.retrieve('felix', './cats', function(err, data) {
             assert.deepEqual(data, felix);
             done();
         });
@@ -118,9 +118,15 @@ describe('check that all files were properly stored', done => {
     });
 
     it('checks to make sure that retrieve gives us a sorted array of all resources if you retrieve any ID', done => {
-        store.retrieve('tardar', './cats', (err, data, array) => {
+        store.retrieve('tardar', './cats', (err, data) => {
             assert.deepEqual(data, tardar);
-            assert.deepEqual(array, catArray);
+            done();
+        });
+    });
+
+    it('checks to make sure that if you pass a null value into retrieve, it returns all data', done => {
+        store.retrieve( null, './cats', (err, data) => {
+            assert.deepEqual(data, catArray);
             done();
         });
     });
