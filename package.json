@@ -1,0 +1,34 @@
+{
+  "name": "cat-file-store",
+  "version": "1.0.0",
+  "description": "store and retrieve cats",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R nyan",
+    "pretest": "eslint ./",
+    "test:watch": "mocha -R nyan -w",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantumArchive/file-store.git"
+  },
+  "author": "Chris Bruner and Albert Reel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QuantumArchive/file-store/issues"
+  },
+  "homepage": "https://github.com/QuantumArchive/file-store#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4"
+  },
+  "dependencies": {
+    "eslint": "^3.8.1",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  }
+}

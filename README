@@ -1,0 +1,15 @@
+### Cats File Store
+
+v 1.0.0
+
+NPM Scripts
+
+Run using npm run <command>:
+
+-test : mocha -R nyan
+-pretest : eslint ./
+-test:watch : mocha -R nyan -w (continues to monitor and test as changes are made)
+-lint: eslint ./
+
+This API will create a folder that you ask and take an object and convert that object into a json File
+
