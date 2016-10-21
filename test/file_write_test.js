@@ -7,17 +7,13 @@ const testData = {
   league: 'American'
 };
 
+it('writes file', done => {
 
-describe('write data', function() {
+  write(testData, (err, contents) => {
+    if (err) return done(err);
 
-  it('data verify', function() {
-    write(testData, (err, data) => {
-      assert.deepEqual(data, {
-        team: 'Athletics',
-        city: 'Oakland',
-        league: 'American'
-      }
-      );
-    });
+    assert.deepEqual(contents, testData);
+    done();
   });
+
 });
