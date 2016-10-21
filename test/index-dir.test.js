@@ -5,10 +5,10 @@ var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 
 
-// after(function(err) {
-//         rimraf.sync('tree-dir/index.txt');
-//         rimraf.sync('tree-dir/*.json');
-//     })
+// before(err => {
+//     if (err) return err;
+//     rimraf('tree-dir/')
+// })
 
 describe('index-dir', function(){
     var tree1 = {name: "oak", deciduous: false, age: 150}
