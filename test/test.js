@@ -27,7 +27,7 @@ var superpeople = [
 ]; 
 
 describe('', function(){
-  it('writes to file', done => {
+  it('writes to file', function(done) {
     createFile('./superhero', superpeople[0], function() {
       fs.readFile('./superhero/wonderwoman.json','utf-8', function(err, data) {
         if (err) throw err;
@@ -38,7 +38,7 @@ describe('', function(){
     });
   });
 
-    it('writes multiple files', done => {
+  it('writes multiple files', function(done) {
     createFile('./superhero', superpeople[1], function() {
       fs.readFile('./superhero/ironman.json','utf-8', function(err, data) {
         if (err) throw err;
@@ -52,23 +52,23 @@ describe('', function(){
   
   it('read file results', done => {
     readFile('./superhero', function(err, fileArray) {
-      assert.deepEqual(fileArray, [ [ 'ironman.json', 'wonderwoman.json' ] ]  );
+      assert.deepEqual(fileArray, [ [ 'ironman.json', 'wonderwoman.json' ] ] );
       done();
-    })
+    });
   });
 
   it('read content results', done => {
     readContents('./superhero', function(err, results) {
       assert.deepEqual(results,['{"id":"ironman","race":"human","superpower":"powersuit"}', '{"id":"wonderwoman","race":"Amazonian","superpower":"superstrength"}' ]);
       done();
-    })
+    });
   });
 
 
   after(function(done) {
-      rimraf('./superhero', function() {
+    rimraf('./superhero', function() {
       console.log('err');
       done();
-      })
+    });
   });
 });
