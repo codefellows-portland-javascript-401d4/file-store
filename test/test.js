@@ -59,7 +59,7 @@ describe('', function(){
 
   it('read content results', done => {
     readContents('./superhero', function(err, results) {
-      assert.deepEqual(results,[ '{"id":"wonderwoman","race":"Amazonian","superpower":"superstrength"}','{"id":"ironman","race":"human","superpower":"powersuit"}' ]);
+      assert.deepEqual(results,['{"id":"ironman","race":"human","superpower":"powersuit"}', '{"id":"wonderwoman","race":"Amazonian","superpower":"superstrength"}' ]);
       done();
     })
   });
