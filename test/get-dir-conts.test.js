@@ -17,15 +17,3 @@ it('gets all of the sorted file contents', done => {
         done();
     });
 });
-// it('gets all file contents', done => {
-//     getDirContents('./test-dir', (err, contents) => {
-//         if(err) return done(err);
-
-//         assert.deepEqual(
-//             contents,
-//             ['bar', 'foo', 'qux']
-//         );
-
-//         done();
-//     });
-// });
