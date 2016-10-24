@@ -51,15 +51,15 @@ describe('testing storage', function(){
         });
     });
 
+
+
     it('#sorts the data pulled out', function(done) {
         //retreive and sort data
-
         // store the other two objects into files.
         mainCharacter.storeMC(tavi, (err, id) => {
             if (err) throw err;
             mainCharacter.storeMC(jane, (err, id) => {
                 if (err) throw err;
-
                 // now get all the files in a sorted order
                 const testRtn = [tavi, dresden, jane];
                 mainCharacter.getAllSortedMC( (err, data) => {
