@@ -1,0 +1,32 @@
+{
+  "name": "file-store",
+  "version": "1.0.0",
+  "description": "Parallel File Processing",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run list",
+    "test": "npm run test:run",
+    "test:run": "mocha",
+    "test:watch": "npm run test:run -- -w",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanPickard/file-store.git"
+  },
+  "author": "Nathan Pickard",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  },
+  "bugs": {
+    "url": "https://github.com/NathanPickard/file-store/issues"
+  },
+  "homepage": "https://github.com/NathanPickard/file-store#readme"
+}
