@@ -1,0 +1,32 @@
+{
+  "name": "main-characters",
+  "version": "1.0.0",
+  "description": "Descriptions on main characters from sci-fi, fantasy, or other such stories.",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "npm run test:run",
+    "lint": "eslint .",
+    "test:run": "mocha",
+    "test:watch": "npm run test:run -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hpats67/file-store.git"
+  },
+  "author": "@hpats67/@jpgothro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hpats67/file-store/issues"
+  },
+  "homepage": "https://github.com/hpats67/file-store#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
+}
