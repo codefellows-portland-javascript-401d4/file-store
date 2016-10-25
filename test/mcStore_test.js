@@ -32,8 +32,9 @@ const jane = {
 // Run tests
 describe('testing storage', function(){
     after(function(cb){
-        rimraf('./data', cb)
-    })
+        rimraf('./data', cb);
+    });
+
     it('#stores an object properly', function(done) {
         // store an object
         mainCharacter.storeMC(dresden, (err, id) => {
@@ -50,18 +51,22 @@ describe('testing storage', function(){
         });
     });
 
+
+
     it('#sorts the data pulled out', function(done) {
         //retreive and sort data
-
         // store the other two objects into files.
-        mainCharacter.storeMC(tavi, (err, id) => {});
-        mainCharacter.storeMC(jane, (err, id) => {});
-
-        // now get all the files in a sorted order
-        const testRtn = [tavi, dresden, jane];
-        mainCharacter.getAllSortedMC( (err, data) => {
-            assert.deepEqual(data, testRtn);
-            done();
+        mainCharacter.storeMC(tavi, (err, id) => {
+            if (err) throw err;
+            mainCharacter.storeMC(jane, (err, id) => {
+                if (err) throw err;
+                // now get all the files in a sorted order
+                const testRtn = [tavi, dresden, jane];
+                mainCharacter.getAllSortedMC( (err, data) => {
+                    assert.deepEqual(data, testRtn);
+                    done();
+                });
+            });
         });
     });
 });
