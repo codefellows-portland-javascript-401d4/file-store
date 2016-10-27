@@ -59,13 +59,14 @@ describe('adding and removing files', function(){
     };  
     get.mergeAllFiles('elements', secondTest);  
   });
+
   it('creates JSON files for only the specified elements', function(done){
     function thirdTest(arr) {
       console.log('test 3 running');
       assert.deepEqual([{name: "helium", number: 2, mass: 4, symbol: "He"}, {name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
     };  
-    get.findMultipleFiles(['beryllium', 'helium'], thirdTest);  
+    get.findFiles(['beryllium', 'helium'], thirdTest);  
   });
   it('creates a JSON file for a single specified element', function(done){
     function fourthTest(arr) {
@@ -73,7 +74,15 @@ describe('adding and removing files', function(){
       assert.deepEqual([{name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
     };  
-    get.findMultipleFiles(['beryllium'], fourthTest);  
+    get.findFiles(['beryllium'], fourthTest);  
+  });
+  it('finds all files in the elements directory', function(done){
+    function thirdTest(arr) {
+      console.log('test 5 running');
+      assert.deepEqual(elements, arr);
+      done();
+    };  
+    get.findFiles(elements, fifthTest);  
   });
 });
 
