@@ -7,6 +7,12 @@ Collaborators: Mugsy Carter and Tim Combs
 
 This app is to be used in the terminal.
  
+
+index.js
+    index.js is the entry point for this app.  Running it will save the elements data to the elements directory in the data folder, conosole lof the info for 'Boron' and then delete the folder."
+
+
+
 Storing
 
 store.saveFile(obj, newFolderName, cb);
@@ -30,8 +36,16 @@ get.findFiles(nameArray, callback);
             get.findFiles(['Helium'], function(){});
 
 
-get.findAllFiles = function(directoryName){
+get.findAllFiles = function(directoryName, cb);
     //this function finds all the files in a directory and logs their info to the console.
 
         example call (finds all the files in the elements folder and logs their info to the console)
-            get.findAllFiles(elements);
+            get.findAllFiles(elements, function(){});
+
+
+
+scrap.scrapFiles = function(directoryName, cb);
+    //this function deletes a directory
+
+        example call (deletes a directory)
+            scrap.scrapFiles('elements', function({}));
