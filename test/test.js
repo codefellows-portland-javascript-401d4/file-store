@@ -24,13 +24,13 @@ const elements = [
     symbol: "Li"
   },
   {
-    name: "Beryllium",
+    name: "beryllium",
     number: 4,
     mass: 9,
     symbol: "Be"
   },
   {
-    name: "Boron",
+    name: "boron",
     number: 5,
     mass: 11,
     symbol: "B"
@@ -64,7 +64,7 @@ describe('adding and removing files', function(){
   it('finds JSON files for only the specified elements', function(done){
     function thirdTest(arr) {
       console.log('test 3 running');
-      assert.deepEqual([{name: "helium", number: 2, mass: 4, symbol: "He"}, {name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
+      assert.deepEqual([{name: "helium", number: 2, mass: 4, symbol: "He"}, {name: "beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
     };  
     get.findFiles(['beryllium', 'helium'], thirdTest);  
@@ -72,14 +72,14 @@ describe('adding and removing files', function(){
   it('finds a JSON file for a single specified element', function(done){
     function fourthTest(arr) {
       console.log('test 4 running');
-      assert.deepEqual([{name: "Beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
+      assert.deepEqual([{name: "beryllium", number: 4, mass: 9,symbol: "Be"}], arr);
       done();
     };  
     get.findFiles(['beryllium'], fourthTest);  
   });
   it('finds all files in the elements directory', function(done){
     function fifthTest(filenames) {
-      assert.deepEqual([ 'Beryllium.json','Boron.json','helium.json','hydrogen.json','lithium.json' ], filenames);
+      assert.deepEqual([ 'beryllium.json','boron.json','helium.json','hydrogen.json','lithium.json' ], filenames);
       done();
     };  
     get.findAllFiles('elements', fifthTest);  
@@ -91,7 +91,7 @@ describe('adding and removing files', function(){
       var arr = (__dirname).split('/');
       arr.pop();
       var directoryPath = arr.join('/');
-      directoryPath += '/data/elements/Boron.json';
+      directoryPath += '/data/elements/boron.json';
       console.log('sixth directory is', directoryPath);
       fs.readFile(directoryPath, (err, data) => {
         console.log(err);
